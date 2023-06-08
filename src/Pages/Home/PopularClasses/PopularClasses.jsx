@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import UsePopularClass from "../../../hooks/UsePopularClass";
 
 const PopularClasses = () => {
@@ -20,7 +21,7 @@ const PopularClasses = () => {
             }
             </div>
             <div className="text-center">
-                <button className="btn btn-outline bg-base-100 shadow-xl">Show more classes</button>
+                <Link to='/classes'><button className="btn btn-outline bg-base-100 shadow-xl">Show more classes</button></Link>
             </div>
             
         </div>

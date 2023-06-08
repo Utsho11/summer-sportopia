@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import UseInstructor from "../../../hooks/UseInstructor";
 
 const PopularInstructors = () => {
@@ -16,7 +17,7 @@ const PopularInstructors = () => {
                 }
             </div>
             <div className="text-center">
-                <button className="btn btn-outline bg-base-100 shadow-xl">Meet with our more instructors</button>
+                <Link to='/instructors'><button className="btn btn-outline bg-base-100 shadow-xl">Meet with our more instructors</button></Link>
             </div>
         </div>
     );
