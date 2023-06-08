@@ -3,7 +3,7 @@ import NavBar from "../Pages/Shared/NavBar/NavBar";
 
 const Main = () => {
     return (
-        <div>
+        <div className="bg-gradient-to-b from-green-600 via-green-200">
             <NavBar></NavBar>
             <Outlet></Outlet>
         </div>

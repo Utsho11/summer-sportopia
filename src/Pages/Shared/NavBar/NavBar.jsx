@@ -10,7 +10,7 @@ const NavBar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-transparent fixed z-10">
+            <div className="navbar bg-gradient-to-r from-green-600 via-green-300 fixed z-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -21,7 +21,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     
-                    <Link to='/' className="flex items-center"><img src="https://i.ibb.co/8z5xQZK/logo.jpg" className="w-24 mr-4 border rounded-full"/><span className="font-bold text-3xl text-white">Summer Sportopia</span></Link>
+                    <Link to='/' className="flex items-center"><img src="https://i.ibb.co/8z5xQZK/logo.jpg" className="w-24 mr-4 border rounded-full"/><span className="font-bold text-3xl">Summer Sportopia</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
