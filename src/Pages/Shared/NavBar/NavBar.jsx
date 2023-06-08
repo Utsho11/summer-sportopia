@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     const navOptions = <>
-    <li><Link className="font-semibold">HOME</Link></li>
-    <li><Link className="font-semibold">OUR CLASSES</Link></li>
+    <li><Link to='/' className="font-semibold">HOME</Link></li>
+    <li><Link to='/classes' className="font-semibold">OUR CLASSES</Link></li>
     <li><Link className="font-semibold">OUR INSTRUCTORS</Link></li>
     <li><Link className="font-semibold">DASHBOARD</Link></li>
 

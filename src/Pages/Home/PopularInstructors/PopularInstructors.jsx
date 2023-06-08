@@ -10,7 +10,7 @@ const PopularInstructors = () => {
             <div className="lg:grid grid-cols-2 my-8 gap-8">
                 {
                     popular.map(item => <div key={item._id} className='flex space-x-4 items-center justify-center'>
-                        <img style={{ borderRadius: '0 200px 200px 200px' }} className='w-[100px]' src={item.image} alt="" />
+                        <img style={{ borderRadius: '200px 0 200px 200px' }} className='w-[100px]' src={item.image} alt="" />
                         <h3 className='uppercase'>~~~ {item.name} ~~~</h3>
                     </div>)
                 }
