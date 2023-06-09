@@ -1,13 +1,54 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UseAuth from "../../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+    const {createUser,updateUserProfile} = UseAuth()
 
     const onSubmit = data => {
-        console.log(data);
+        createUser(data.email,data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            updateUserProfile(data.name,data.photo)
+            .then(() => {
+                const loggedUser = {name: data.name, email: data.email}
+                fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(loggedUser)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                reset()
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Successfully Created User',
+                                    showClass: {
+                                        popup: 'animate__animated animate__fadeInDown'
+                                    },
+                                    hideClass: {
+                                        popup: 'animate__animated animate__fadeOutUp'
+                                    }
+                                });
+                                navigate('/')
+                            }
+                        })
+
+                })
+                .catch(error => {
+                    console.log(error);
+                })        
+        })
     }
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
