@@ -7,7 +7,7 @@ const ClassCard = ({ items }) => {
         <div>
             {
                 availableSeats === 0 ?
-                    <div className="card mt-32 mx-4 w-96 bg-red-500 shadow-xl">
+                    <div className="card my-4 mx-4 w-96 bg-red-500 shadow-xl">
                         <figure><img className="w-full h-60" src={image} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{sportName}</h2>
@@ -22,7 +22,7 @@ const ClassCard = ({ items }) => {
                         </div>
                     </div>
                     :
-                    <div className="card mt-32 mx-4 w-96 bg-base-100 shadow-xl">
+                    <div className="card mx-4 w-96 bg-base-100 shadow-xl">
                         <figure><img className="w-full h-60" src={image} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{sportName}</h2>

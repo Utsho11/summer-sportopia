@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,6 +13,7 @@ const Login = () => {
         setShowPassword(!showPassword);
     };
     return (
+        <div className="pt-28">
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 text-center lg:text-left">
@@ -49,9 +51,11 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <input type="submit" value="Login" className="btn btn-primary" />
                         </div>
+                        <p>New here ? Please <Link to='/register'><span className="text-blue-600 font-semibold">Register.</span></Link> </p>
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

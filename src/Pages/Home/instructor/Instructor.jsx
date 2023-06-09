@@ -4,7 +4,7 @@ import UseInstructor from "../../../hooks/UseInstructor";
 const Instructor = () => {
     const [instructors] = UseInstructor();
     return (
-        <div className="lg:grid grid-cols-3">
+        <div className="pt-32 lg:grid grid-cols-3">
             {
                 instructors.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
             }
