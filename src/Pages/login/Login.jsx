@@ -1,13 +1,36 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import UseAuth from "../../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const {login} = UseAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         console.log(data);
+        login(data.email,data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            reset();
+            Swal.fire({
+                icon: 'success',
+                title: 'Successfully logged in',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+              navigate(from,{replace:true});
+        })
     }
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);

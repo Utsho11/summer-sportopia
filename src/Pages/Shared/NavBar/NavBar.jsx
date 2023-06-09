@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom";
+import UseAuth from "../../../hooks/UseAuth";
 
 const NavBar = () => {
+
+    const {logout} = UseAuth();
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
+
     const navOptions = <>
     <li><Link to='/' className="font-semibold">HOME</Link></li>
     <li><Link to='/classes' className="font-semibold">OUR CLASSES</Link></li>
     <li><Link to='/instructors' className="font-semibold">OUR INSTRUCTORS</Link></li>
     <li><Link className="font-semibold">DASHBOARD</Link></li>
     <li><Link to='/login' className="font-semibold">Login</Link></li>
-   
+    <li onClick={handleLogout} className=" hover:text-yellow-400 uppercase"><Link to='/'>Logout</Link></li>
+
     </>
     return (
         <div>
