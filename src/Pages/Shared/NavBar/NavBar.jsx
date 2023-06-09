@@ -3,7 +3,7 @@ import UseAuth from "../../../hooks/UseAuth";
 
 const NavBar = () => {
 
-    const {logout} = UseAuth();
+    const { user, logout } = UseAuth();
 
     const handleLogout = () => {
         logout()
@@ -13,12 +13,15 @@ const NavBar = () => {
 
 
     const navOptions = <>
-    <li><Link to='/' className="font-semibold">HOME</Link></li>
-    <li><Link to='/classes' className="font-semibold">OUR CLASSES</Link></li>
-    <li><Link to='/instructors' className="font-semibold">OUR INSTRUCTORS</Link></li>
-    <li><Link className="font-semibold">DASHBOARD</Link></li>
-    <li><Link to='/login' className="font-semibold">Login</Link></li>
-    <li onClick={handleLogout} className=" hover:text-yellow-400 uppercase"><Link to='/'>Logout</Link></li>
+        <li><Link to='/' className="font-semibold">Home</Link></li>
+        <li><Link to='/classes' className="font-semibold">Our classes</Link></li>
+        <li><Link to='/instructors' className="font-semibold">Our instructors</Link></li>
+        <li><Link className="font-semibold">Dashboard</Link></li>
+        {
+            user ?
+                <li onClick={handleLogout} className="font-semibold"><Link to='/'>Logout</Link></li> :
+                <li><Link to='/login' className="font-semibold">Login</Link></li>
+        }
 
     </>
     return (
@@ -33,8 +36,8 @@ const NavBar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    
-                    <Link to='/' className="flex items-center"><img src="https://i.ibb.co/8z5xQZK/logo.jpg" className="w-24 mr-4 border rounded-full"/><span className="font-bold text-3xl">Summer Sportopia</span></Link>
+
+                    <Link to='/' className="flex items-center"><img src="https://i.ibb.co/8z5xQZK/logo.jpg" className="w-24 mr-4 border rounded-full" /><span className="font-bold text-3xl">Summer Sportopia</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
