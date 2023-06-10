@@ -1,11 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaHome, } from 'react-icons/fa';
 import NavBar from "../Pages/Shared/NavBar/NavBar";
+import VerifyAdmin from "../hooks/VerifyAdmin";
+import VerifyInstructor from "../hooks/VerifyInstructor";
 
 const Dashboard = () => {
 
-    const isAdmin = false;
-    const isInstructor = true;
+    const [isAdmin] = VerifyAdmin();
+    const [isInstructor] =VerifyInstructor();
     return (
         <div>
             <NavBar></NavBar>

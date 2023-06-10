@@ -37,7 +37,7 @@ const ManageUsers = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: `${user.name} is now an admin`,
+                    title: `${user.name} is now an instructor`,
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -54,6 +54,7 @@ const ManageUsers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>email</th>
+                            <th>Current Role</th>
                             <th>Admin</th>
                             <th>Instructor</th>
                         </tr>
@@ -63,6 +64,7 @@ const ManageUsers = () => {
                             <th>{index + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
+                            <td>{user.role? user.role : 'student'}</td>
                             <td>{user.role == 'admin' ? 'admin' : 
                             <button disabled={user.role == "admin"} onClick={()=>{handleUpdateAdmin(user)}} className="btn bg-orange-400 btn-ghost btn-xs text-white"><FaUserShield></FaUserShield></button>
                             }</td>
