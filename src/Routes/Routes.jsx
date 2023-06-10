@@ -5,8 +5,10 @@ import Class from "../Pages/Home/Class/Class";
 import Instructor from "../Pages/Home/instructor/Instructor";
 import Login from "../Pages/login/Login";
 import Register from "../Pages/Register/Register";
-import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
+import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -37,9 +39,20 @@ export const router = createBrowserRouter([
     },
     {
       path: '/dashboard',
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-      children:[
-
+      element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: '/dashboard',
+          element: <UserHome></UserHome>
+        },
+        {
+          path: '/dashboard/selectedClass',
+          element: <MySelectedClass></MySelectedClass>
+        },
+        {
+          path: '/dashboard/payment',
+          element:<Payment></Payment>
+        }
       ]
     }
   ]);

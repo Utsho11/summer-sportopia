@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../hooks/UseAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
@@ -13,7 +14,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
-        console.log(data);
         login(data.email,data.password)
         .then(result => {
             const user = result.user;
@@ -75,6 +75,7 @@ const Login = () => {
                             <input type="submit" value="Login" className="btn btn-primary" />
                         </div>
                         <p>New here ? Please <Link to='/register'><span className="text-blue-600 font-semibold">Register.</span></Link> </p>
+                        <SocialLogin></SocialLogin>
                     </form>
                 </div>
             </div>

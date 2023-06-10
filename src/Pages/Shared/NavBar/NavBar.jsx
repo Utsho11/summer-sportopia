@@ -16,13 +16,17 @@ const NavBar = () => {
         <li><Link to='/' className="font-semibold">Home</Link></li>
         <li><Link to='/classes' className="font-semibold">Our classes</Link></li>
         <li><Link to='/instructors' className="font-semibold">Our instructors</Link></li>
-        <li><Link className="font-semibold">Dashboard</Link></li>
+        <li><Link to='/dashboard' className="font-semibold">Dashboard</Link></li>
         {
-            user ?
-                <li onClick={handleLogout} className="font-semibold"><Link to='/'>Logout</Link></li> :
-                <li><Link to='/login' className="font-semibold">Login</Link></li>
+            user ? <>
+                <div className="avatar">
+                    <div className="w-16 rounded-full items-center">
+                        <img src={user.photoURL} />
+                    </div>
+                </div>
+                <li onClick={handleLogout} className="font-semibold"><Link to='/'>Logout</Link></li></> : <>
+                <li className=" hover:text-yellow-400 font-semibold" ><Link to='/login'>Login</Link></li></>
         }
-
     </>
     return (
         <div>
