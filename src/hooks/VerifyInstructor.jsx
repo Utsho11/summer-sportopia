@@ -12,6 +12,7 @@ const VerifyInstructor = () => {
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
             return res.data.instructor;
         }
+
     })
     return [isInstructor,isInstructorLoading]
 

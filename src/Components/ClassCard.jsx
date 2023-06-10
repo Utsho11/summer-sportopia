@@ -12,7 +12,6 @@ const ClassCard = ({ items }) => {
     const [,refetch] = UseSelectedClass();
 
     const handleEnrollClasses = item =>{
-        console.log(item);
         if(user && user.email){
             const selectedClass = {email: user.email,_id,image,price,sportName,instructorName}
             fetch('http://localhost:5000/selectClasses',{
@@ -24,7 +23,6 @@ const ClassCard = ({ items }) => {
             })
             .then(res => res.json())
             .then(data =>{
-                console.log(data);
                 if(data.insertedId)
                 {
                     refetch()
