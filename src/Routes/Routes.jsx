@@ -9,6 +9,12 @@ import Dashboard from "../Layouts/Dashboard";
 import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
+import ManageClass from "../Pages/Dashboard/Admin/ManageClass";
+import InstructorHome from "../Pages/Dashboard/Instructor/InstructorHome";
+import AddClass from "../Pages/Dashboard/Instructor/AddClass";
+import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +48,7 @@ export const router = createBrowserRouter([
       element: <Dashboard></Dashboard>,
       children: [
         {
-          path: '/dashboard',
+          path: '/dashboard/userHome',
           element: <UserHome></UserHome>
         },
         {
@@ -52,6 +58,30 @@ export const router = createBrowserRouter([
         {
           path: '/dashboard/payment',
           element:<Payment></Payment>
+        },
+        {
+          path: '/dashboard/adminHome',
+          element: <AdminHome></AdminHome>
+        },
+        {
+          path: '/dashboard/manageUsers',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
+          path: '/dashboard/manageClass',
+          element: <ManageClass></ManageClass>
+        },
+        {
+          path: '/dashboard/instructorHome',
+          element: <InstructorHome></InstructorHome>
+        },
+        {
+          path: '/dashboard/addClass',
+          element: <AddClass></AddClass>
+        },
+        {
+          path: '/dashboard/myClasses',
+          element: <MyClasses></MyClasses>
         }
       ]
     }
