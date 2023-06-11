@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import UseAuth from "../hooks/UseAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import UseSelectedClass from "../hooks/UseSelectedClass";
+import axios from "axios";
 
 const ClassCard = ({ items }) => {
 
@@ -11,30 +12,24 @@ const ClassCard = ({ items }) => {
     const location = useLocation();
     const [,refetch] = UseSelectedClass();
 
-    const handleEnrollClasses = item =>{
+    const handleEnrollClasses = async item =>{
+
         if(user && user.email){
-            const selectedClass = {email: user.email,_id,image,price,sportName,instructorName}
-            fetch('http://localhost:5000/selectClasses',{
-                method: 'POST',
-                headers: {
-                    "content-type" : "application/json"
-                },
-                body: JSON.stringify(selectedClass)
-            })
-            .then(res => res.json())
-            .then(data =>{
-                if(data.insertedId)
-                {
-                    refetch()
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'success',
-                        title: 'Class has been enrolled',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                }
-            })
+             
+
+            try {
+                await axios.post(`http://localhost:5000/selectClasses`,{email: user.email,_id,image,price,sportName,instructorName});
+                refetch()
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Class has been enrolled',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+              } catch (error) {
+                console.error(error);
+              }
         }
         else{
             Swal.fire({
@@ -82,7 +77,7 @@ const ClassCard = ({ items }) => {
                                 <p className="text-orange-400 font-bold">Price: ${price}</p>
                             </div>
                             <div className="card-actions justify-center">
-                                <button onClick={()=>{handleEnrollClasses(items)}} disabled={availableSeats === 0} className="btn btn-outline">Enroll Now</button>
+                                <button onClick={()=>{handleEnrollClasses(items._id)}} disabled={availableSeats === 0} className="btn btn-outline">Enroll Now</button>
                             </div>
                         </div>
                     </div>

@@ -1,12 +1,12 @@
 import ClassCard from "../../../Components/ClassCard";
-import UseClass from "../../../hooks/UseClass";
+import UseAgreedClasses from "../../../hooks/UseAgreedClasses";
 
 const Class = () => {
-    const [classes] = UseClass();
+    const [agreedClasses] = UseAgreedClasses()
     return (       
             <div className="pt-32 lg:grid grid-cols-3 gap-8">
                 {
-                    classes.map(items => <ClassCard key={items._id} items={items}></ClassCard>)
+                    agreedClasses.map(items => <ClassCard key={items._id} items={items}></ClassCard>)
                 }
             </div>
     );

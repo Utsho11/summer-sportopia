@@ -2,12 +2,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import UseSelectedClass from "../../../hooks/UseSelectedClass";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const MySelectedClass = () => {
-    const [selectedClass,refetch] = UseSelectedClass();
+    const [selectedClasses,refetch] = UseSelectedClass();
 
-    const handleDelete = item => {
+    const handleDelete = item =>{
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -17,16 +18,15 @@ const MySelectedClass = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
-            console.log(result);
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/selectClasses/${item._id}`,{
+              fetch(`http://localhost:5000/selectedClass/delete/${item._id}`,{
                 method: 'DELETE'
               })
               .then(res => res.json())
               .then(data =>{
                 console.log(data);
-                  refetch()
-                  if(data.deletedCount > 0)
+                refetch()
+                if(data.deletedCount > 0)
                 {
                     Swal.fire(
                         'Deleted!',
@@ -37,11 +37,11 @@ const MySelectedClass = () => {
               } )
             }
           })
-    }
+    };
     return (
         <div>
             <div className="flex gap-36 items-center justify-center my-8 ">
-                <h1 className="text-3xl font-bold text-center mt-4">Total Selected Class: {selectedClass.length}</h1>
+                <h1 className="text-3xl font-bold text-center mt-4">Total Selected Class: {selectedClasses.length}</h1>
                 <Link to="/dashboard/payment">
                     <button className="btn btn-warning btn-sm mt-6">Pay</button>
                 </Link>
@@ -63,7 +63,7 @@ const MySelectedClass = () => {
                         </thead>
                         <tbody>
                             {
-                                selectedClass.map((item, index) =>
+                                selectedClasses.map((item, index) =>
                                     <tr key={item._id}>
                                         <td>{index + 1}</td>
                                         <td>
