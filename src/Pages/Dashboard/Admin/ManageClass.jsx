@@ -93,10 +93,10 @@ const ManageClass = () => {
                                         <td>{item.availableSeats}</td>
                                         <td>${item.price}</td>
                                         <td>
-                                            <button disabled={item.status} onClick={() => { handleUpdateAgreed(item) }} className="btn bg-blue-400 btn-ghost btn-xs text-white">Agree</button>
+                                            <button disabled={item.status ==='Agreed'} onClick={() => { handleUpdateAgreed(item) }} className="btn bg-blue-400 btn-ghost btn-xs text-white">Agree</button>
                                         </td>
                                         <td>
-                                            <button disabled={item.status} onClick={() => { handleUpdateDeny(item) }} className="btn bg-red-400 btn-ghost btn-xs text-white">Deny</button>
+                                            <button disabled={item.status ==='Deny'} onClick={() => { handleUpdateDeny(item) }} className="btn bg-red-400 btn-ghost btn-xs text-white">Deny</button>
                                         </td>
                                         <td>
                                             <div className="container mx-auto">

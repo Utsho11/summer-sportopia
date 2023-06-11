@@ -1,8 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaHome, } from 'react-icons/fa';
+import { FaBook, FaChalkboardTeacher, FaCheckSquare, FaHome, FaMoneyCheckAlt, FaPlusSquare, FaUserAlt, } from 'react-icons/fa';
 import NavBar from "../Pages/Shared/NavBar/NavBar";
 import VerifyAdmin from "../hooks/VerifyAdmin";
 import VerifyInstructor from "../hooks/VerifyInstructor";
+import Footer from "../Pages/Shared/SocialLogin/Footer/Footer";
 
 const Dashboard = () => {
 
@@ -24,19 +25,19 @@ const Dashboard = () => {
                         {
                             isAdmin ? <>
                             <li><Link to='/dashboard/adminHome'><FaHome></FaHome> Admin Home</Link></li>
-                            <li><Link to='/dashboard/manageUsers'>Manage Users</Link></li>
-                            <li><Link to='/dashboard/manageClass'>Manage Class</Link></li> </> : <>
+                            <li><Link to='/dashboard/manageUsers'><FaUserAlt></FaUserAlt> Manage Users</Link></li>
+                            <li><Link to='/dashboard/manageClass'><FaBook></FaBook>Manage Class</Link></li> </> : <>
                             {
                                 isInstructor ? <>
                                 <li><Link to='/dashboard/instructorHome'><FaHome></FaHome> Instructor Home</Link></li>
-                                <li><Link to='/dashboard/addClass'>Add Class</Link></li>
-                                <li><Link to='/dashboard/myClasses'>My Classes</Link></li>
+                                <li><Link to='/dashboard/addClass'><FaPlusSquare></FaPlusSquare>Add Class</Link></li>
+                                <li><Link to='/dashboard/myClasses'><FaChalkboardTeacher></FaChalkboardTeacher> My Classes</Link></li>
                                 </>
                                  :
                                  <>
                                 <li><Link to='/dashboard/userHome'><FaHome></FaHome> User Home</Link></li>
-                                <li><Link to='/dashboard/selectedClass'>My Selected Class</Link></li>
-                                <li><Link to='/dashboard/enrolledClass'>My Enrolled Class</Link></li>
+                                <li><Link to='/dashboard/selectedClass'><FaCheckSquare></FaCheckSquare> My Selected Class</Link></li>
+                                <li><Link to='/dashboard/enrolledClass'><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
                                  </>
                             }                            
                             </>
@@ -49,6 +50,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

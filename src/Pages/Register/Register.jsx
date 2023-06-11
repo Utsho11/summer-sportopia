@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import UseAuth from "../../hooks/UseAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import regImg from '../../assets/register/register.jpg'
+import { Fade } from "react-awesome-reveal";
 
 const Register = () => {
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
@@ -55,13 +57,16 @@ const Register = () => {
     };
     return (
         <div className="pt-28">
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="w-1/2 text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Register now</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <Fade>
+
+                    <img className="w-full" src={regImg} alt="" />
+                    </Fade>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <h1 className="text-5xl text-center my-4  font-bold">Register now</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -106,7 +111,7 @@ const Register = () => {
                         <div className="form-control mt-6">
                             <input type="submit" value="Register" className="btn btn-primary" />
                         </div>
-                        <p>Already have an account ? <Link to='/login'>Login</Link> </p>
+                        <p>Already have an account ? <Link to='/login'><b className="text-blue-600">Login</b></Link> </p>
                         <SocialLogin></SocialLogin>
                     </form>
                 </div>

@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import UsePopularClass from "../../../hooks/UsePopularClass";
+import { Bounce } from "react-awesome-reveal";
 
 const PopularClasses = () => {
     const [popularClasses] = UsePopularClass();
     return (
         <div className="my-8">
+            <Bounce>
             <h1 className="text-5xl text-center font-bold">OUR POPULAR CLASSES</h1>
+            </Bounce>
             <div className="grid lg:grid-cols-3 gap-8 my-8 lg:mx-4">
             {
                 popularClasses.map(item => 

@@ -4,7 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../hooks/UseAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
-
+import logImg from '../../assets/login/login.jpg'
+import { JackInTheBox } from "react-awesome-reveal";
 const Login = () => {
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
+
         login(data.email,data.password)
         .then(result => {
             const user = result.user;
@@ -36,14 +38,17 @@ const Login = () => {
     };
     return (
         <div className="pt-28">
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <JackInTheBox>
+
+                    <img  src={logImg} alt="" />
+                    </JackInTheBox>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    <h1 className="text-5xl font-bold">Login now!</h1>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

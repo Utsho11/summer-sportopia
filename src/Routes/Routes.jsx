@@ -8,7 +8,6 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../Layouts/Dashboard";
 import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
-import Payment from "../Pages/Dashboard/Payment/Payment";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import ManageClass from "../Pages/Dashboard/Admin/ManageClass";
@@ -17,6 +16,7 @@ import AddClass from "../Pages/Dashboard/Instructor/AddClass";
 import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import Error from "../Pages/Error/Error";
 
 export const router = createBrowserRouter([
     {
@@ -58,10 +58,6 @@ export const router = createBrowserRouter([
           element: <MySelectedClass></MySelectedClass>
         },
         {
-          path: '/dashboard/payment',
-          element:<Payment></Payment>
-        },
-        {
           path: '/dashboard/adminHome',
           element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
         },
@@ -86,5 +82,9 @@ export const router = createBrowserRouter([
           element: <MyClasses></MyClasses>
         }
       ]
+    },
+    {
+      path: "*",
+      element: <Error></Error>
     }
   ]);

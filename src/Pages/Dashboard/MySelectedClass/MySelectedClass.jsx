@@ -7,6 +7,8 @@ import axios from "axios";
 
 const MySelectedClass = () => {
     const [selectedClasses,refetch] = UseSelectedClass();
+    const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
+
 
     const handleDelete = item =>{
         Swal.fire({
@@ -42,6 +44,7 @@ const MySelectedClass = () => {
         <div>
             <div className="flex gap-36 items-center justify-center my-8 ">
                 <h1 className="text-3xl font-bold text-center mt-4">Total Selected Class: {selectedClasses.length}</h1>
+                <h1 className="text-3xl font-bold text-center mt-4">You have to pay:<span className="text-green-600"> ${total}</span></h1>
                 <Link to="/dashboard/payment">
                     <button className="btn btn-warning btn-sm mt-6">Pay</button>
                 </Link>

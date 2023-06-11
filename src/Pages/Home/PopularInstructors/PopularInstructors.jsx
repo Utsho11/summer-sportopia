@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import UseInstructor from "../../../hooks/UseInstructor";
+import { Flip } from "react-awesome-reveal";
 
 const PopularInstructors = () => {
     const [instructors] = UseInstructor();
@@ -7,7 +8,9 @@ const PopularInstructors = () => {
 
     return (
         <div className="my-8">
+            <Flip>
             <h1 className="text-5xl text-center font-bold">OUR TOP INSTRUCTORS</h1>
+                </Flip>            
             <div className="lg:grid grid-cols-2 my-8 gap-8">
                 {
                     popular.map(item => <div key={item._id} className='flex space-x-4 items-center justify-center'>
