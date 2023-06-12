@@ -18,7 +18,7 @@ const ClassCard = ({ items }) => {
              
 
             try {
-                await axios.post(`http://localhost:5000/selectClasses`,{email: user.email,image,price,sportName,instructorName});
+                await axios.post(`https://summer-camp-school-server-utsho11.vercel.app/selectClasses`,{email: user.email,image,price,sportName,instructorName});
                 refetch()
                 Swal.fire({
                     position: 'top',

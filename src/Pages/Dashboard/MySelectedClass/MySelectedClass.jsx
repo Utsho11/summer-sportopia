@@ -2,15 +2,17 @@ import { FaTrashAlt } from "react-icons/fa";
 import UseSelectedClass from "../../../hooks/UseSelectedClass";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 
 const MySelectedClass = () => {
-    const [selectedClasses,refetch] = UseSelectedClass();
+    const [selectedClasses, refetch] = UseSelectedClass();
     const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
 
 
-    const handleDelete = item =>{
+
+
+
+    const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -19,35 +21,33 @@ const MySelectedClass = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/selectedClass/delete/${item._id}`,{
-                method: 'DELETE'
-              })
-              .then(res => res.json())
-              .then(data =>{
-                console.log(data);
-                refetch()
-                if(data.deletedCount > 0)
-                {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                }
-              } )
+                fetch(`https://summer-camp-school-server-utsho11.vercel.app/selectedClass/delete/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        refetch()
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
             }
-          })
+        })
     };
+
     return (
         <div>
             <div className="flex gap-36 items-center justify-center my-8 ">
                 <h1 className="text-3xl font-bold text-center mt-4">Total Selected Class: {selectedClasses.length}</h1>
                 <h1 className="text-3xl font-bold text-center mt-4">You have to pay:<span className="text-green-600"> ${total}</span></h1>
-                <Link to="/dashboard/payment">
-                    <button className="btn btn-warning btn-sm mt-6">Pay</button>
-                </Link>
+
             </div>
 
             <div>
@@ -85,14 +85,20 @@ const MySelectedClass = () => {
                                         <td className='text-white'>
                                             <button onClick={() => { handleDelete(item) }} className="btn bg-red-600 btn-ghost btn-xs"><FaTrashAlt></FaTrashAlt></button>
                                         </td>
+                                        <td>
+                                            <Link to={`/dashboard/payment/${item._id}`}>
+                                                <button className="btn btn-warning btn-sm ">Pay</button>
+                                            </Link>
+                                        </td>
                                     </tr>)
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
     );
 };
 
-export default MySelectedClass;
+export default  MySelectedClass;

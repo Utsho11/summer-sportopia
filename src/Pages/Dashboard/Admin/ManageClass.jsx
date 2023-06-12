@@ -8,7 +8,7 @@ const ManageClass = () => {
 
     const handleUpdateAgreed = (item) => {
 
-        fetch(`http://localhost:5000/classes/agree/${item._id}`, {
+        fetch(`https://summer-camp-school-server-utsho11.vercel.app/classes/agree/${item._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -27,7 +27,7 @@ const ManageClass = () => {
     }
     const handleUpdateDeny = (item) => {
 
-        fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+        fetch(`https://summer-camp-school-server-utsho11.vercel.app/classes/deny/${item._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

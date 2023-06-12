@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import UseAuth from '../../../hooks/UseAuth';
 
-const CheckoutForm = ({ selectedClasses,price  }) => {
+const CheckoutForm = ({ items,price  }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -91,10 +91,11 @@ const CheckoutForm = ({ selectedClasses,price  }) => {
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
-                quantity: selectedClasses.length,
-                classId: selectedClasses._id,
-                className: selectedClasses.sportName,
-                instructor: selectedClasses.instructorName
+                quantity: items.length,
+                classId: items._id,
+                className: items.sportName,
+                instructor: items.instructorName,
+                status: 'paid'
 
 
             }

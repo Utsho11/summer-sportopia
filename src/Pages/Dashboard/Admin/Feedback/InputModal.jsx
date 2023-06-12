@@ -12,7 +12,7 @@ const InputModal = ({ id, isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:5000/classes/feedback/${id}`, { inputValue });
+      await axios.put(`https://summer-camp-school-server-utsho11.vercel.app/classes/feedback/${id}`, { inputValue });
 
       console.log('Submitted:', inputValue);
       setInputValue('');
