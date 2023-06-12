@@ -4,6 +4,7 @@ import NavBar from "../Pages/Shared/NavBar/NavBar";
 import VerifyAdmin from "../hooks/VerifyAdmin";
 import VerifyInstructor from "../hooks/VerifyInstructor";
 import Footer from "../Pages/Shared/SocialLogin/Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
 
@@ -11,12 +12,15 @@ const Dashboard = () => {
     const [isInstructor] =VerifyInstructor();
     return (
         <div>
+            <Helmet>
+                <title>Dashboard</title>
+            </Helmet>
             <NavBar></NavBar>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col sm:mt-28">
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden sm:mt-28">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden sm:mt-96">Open drawer</label>
 
                 </div>
                 <div className="drawer-side mt-28">
@@ -37,7 +41,7 @@ const Dashboard = () => {
                                  <>
                                 <li><Link to='/dashboard/userHome'><FaHome></FaHome> User Home</Link></li>
                                 <li><Link to='/dashboard/selectedClass'><FaCheckSquare></FaCheckSquare> My Selected Class</Link></li>
-                                <li><Link to='/dashboard/enrolledClass'><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
+                                <li><Link to='/dashboard/enrollClasses'><FaMoneyCheckAlt></FaMoneyCheckAlt> My Enrolled Class</Link></li>
                                  </>
                             }                            
                             </>

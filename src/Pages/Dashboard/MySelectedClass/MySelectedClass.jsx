@@ -62,6 +62,7 @@ const MySelectedClass = () => {
                                 <th>Instructor</th>
                                 <th>Price</th>
                                 <th>Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
