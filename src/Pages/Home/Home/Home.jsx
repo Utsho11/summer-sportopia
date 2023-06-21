@@ -6,6 +6,7 @@ import Review from "../Review/Review";
 import ExtraSection from "../extraSection/ExtraSection";
 
 const Home = () => {
+
     return (
         <div className="pt-28 text-white">
             <Helmet>
